@@ -13,6 +13,6 @@ find_package(Qt6 COMPONENTS
         Bluetooth
         REQUIRED)
 
-add_executable(Sony main.cpp)
+add_executable(Sony main.cpp BluetoothDiscovery.cpp BluetoothDiscovery.h)
 target_link_libraries(Sony Qt::Core Qt::Bluetooth)
 

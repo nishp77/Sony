@@ -1,21 +1,12 @@
 #include <QCoreApplication>
-#include <QDebug>
-#include <QBluetoothDeviceDiscoveryAgent>
+#include "BluetoothDiscovery.h"
 
 
 int main(int argc, char *argv[]) {
     QCoreApplication a(argc, argv);
 
-    auto *discoveryAgent = new QBluetoothDeviceDiscoveryAgent();
-    discoveryAgent->start();
-
-    const QBluetoothDeviceInfo device;
-
-    discoveryAgent->deviceDiscovered(device);
-
-    if(device.name() != "") {
-        qDebug() << "Found new device:" << device.name() << '(' << device.address().toString() << ')';
-    }
+    auto d = BluetoothDiscovery();
+    d.startDeviceDiscovery();
 
     return QCoreApplication::exec();
 }
